@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Chessboard Design | Rustcode</title>
+  </head>
+ <style>
+ #chessboard {
+   padding: 0px;
+   margin: 0 auto;
+   border: 2px solid #181818;
+   border-collapse: collapse;
+ }
+ #chessboard tr td {
+   width: 60px;
+  height: 60px;
+ }
+ #chessboard tr:nth-child(2n) td:nth-child(2n+1) {
+   background: #000;
+ }
+ #chessboard tr:nth-child(2n+1) td:nth-child(2n) {
+   background: #000;
+ }
+ </style>
+  <body>
+    <table id='chessboard'></table>
+  </body>
+  <script>
+	var chessboard = document.getElementById('chessboard');
+	var space = 1;
+        for (var row = 0; row < 8; row++) {
+  		var rowEl = document.createElement('tr');
+  		for (var cell = 0; cell < 8; cell++) { 
+    			var cellEl = document.createElement('td');
+    			cellEl.dataset.position = space;
+    			rowEl.appendChild(cellEl);
+    			space++; 
+  		}
+  		chessboard.appendChild(rowEl);
+	}
+	function setPieceData (el, color, type) {
+  		el.classname = '';
+  		el.classList.add(color);
+  		el.classList.add(type);
+	}
+  </script>  
+</html>
