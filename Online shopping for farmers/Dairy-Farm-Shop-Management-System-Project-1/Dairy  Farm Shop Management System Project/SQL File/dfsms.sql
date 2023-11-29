@@ -134,7 +134,7 @@ CREATE TABLE `tblproducts` (
   `CategoryName` varchar(150) DEFAULT NULL,
   `CompanyName` varchar(150) DEFAULT NULL,
   `ProductName` varchar(150) DEFAULT NULL,
-  `ProductPrice` decimal(10,0) DEFAULT current_timestamp(),
+  `ProductPrice` decimal(10,0) DEFAULT 0.00,
   `PostingDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
