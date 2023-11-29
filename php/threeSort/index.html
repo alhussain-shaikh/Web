@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search, Sort, and Modify Array</title>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* CSS for demonstration purposes */
+
+        .body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            width: 300px;
+        }
+        .button-container {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Search, Sort, and Modify Array</h2>
+
+<!-- Input form -->
+<div>
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput">
+    <label for="ageInput">Age:</label>
+    <input type="number" id="ageInput">
+    <button onclick="addElement()">Add to Array</button>
+</div>
+
+<!-- Display card for array elements -->
+<div id="displayCard" class="card"></div>
+
+<!-- Buttons to perform actions -->
+<div class="button-container">
+    <button onclick="displayOriginalArray()">Display Original Array</button>
+    <button onclick="displaySortedArray()">Display Sorted Array</button>
+    <button onclick="modifyArray()">Modify Array</button>
+    <button onclick="searchArray()">Search (Case-Insensitive)</button>
+</div>
+
+<!-- Script to perform operations -->
+<script>
+    // Array of elements
+    const elements = [];
+
+    // Function to add elements to the array and display in card
+    function addElement() {
+        const name = document.getElementById('nameInput').value.trim();
+        const age = parseInt(document.getElementById('ageInput').value);
+        if (!isNaN(age) && name !== '') {
+            elements.push({ name, age });
+            displayArray();
+        } else {
+            alert("Please enter a valid name and age!");
+        }
+    }
+
+    // Function to display array in a card
+    function displayArray() {
+        const displayCard = document.getElementById('displayCard');
+        displayCard.innerHTML = '<p><strong>Array Elements:</strong></p>';
+        elements.forEach(item => {
+            displayCard.innerHTML += `<p>${item.name} - Age: ${item.age}</p>`;
+        });
+    }
+
+    // Function to display original array
+    function displayOriginalArray() {
+        const displayCard = document.getElementById('displayCard');
+        displayCard.innerHTML = '<p><strong>Original Array:</strong></p>';
+        elements.forEach(item => {
+            displayCard.innerHTML += `<p>${item.name} - Age: ${item.age}</p>`;
+        });
+    }
+
+    // Function to display sorted array
+    function displaySortedArray() {
+        const sortedArray = elements.slice().sort((a, b) => a.age - b.age);
+        const displayCard = document.getElementById('displayCard');
+        displayCard.innerHTML = '<p><strong>Sorted Array:</strong></p>';
+        sortedArray.forEach(item => {
+            displayCard.innerHTML += `<p>${item.name} - Age: ${item.age}</p>`;
+        });
+    }
+
+    // Function to modify array (Change ages by adding 1)
+    function modifyArray() {
+        elements.forEach(item => {
+            item.age += 1;
+        });
+        displayArray();
+    }
+
+    // Function for non-case sensitive search
+    function searchArray() {
+        const searchName = prompt("Enter a name to search (Case-Insensitive):").toLowerCase();
+        const searchResult = elements.find(item => item.name.toLowerCase() === searchName);
+        const displayCard = document.getElementById('displayCard');
+        displayCard.innerHTML = '<p><strong>Search Result:</strong></p>';
+        if (searchResult) {
+            displayCard.innerHTML += `<p>${searchResult.name} - Age: ${searchResult.age}</p>`;
+        } else {
+            displayCard.innerHTML += `<p>No result found for ${searchName}</p>`;
+        }
+    }
+</script>
+
+</body>
+</html>

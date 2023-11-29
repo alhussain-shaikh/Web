@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Menu Example</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Select Menu</h5>
+                        <select id="numberSelect" class="form-control mb-3">
+                            <option value="12">12</option>
+                            <option value="86">86</option>
+                            <option value="34">34</option>
+                            <option value="56">56</option>
+                            <option value="7">76</option>
+                            <option value="98">98</option>
+                            <!-- Options will be added here dynamically -->
+                        </select>
+                        <div class="input-group">
+                            <input type="text" id="newOption" class="form-control" placeholder="Enter a number">
+                            <div class="input-group-append">
+                                <button id="addOption" class="btn btn-primary">Add Option</button>
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button id="sortOptions" class="btn btn-success">Sort Options</button>
+                        </div>
+                        <div id="sortedOptionsDiv" class="mt-3"></div> <!-- This div will display the sorted options -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap and jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Add click event handler for the "Add Option" button
+            $("#addOption").click(function () {
+                // Get the user input from the input field
+                var newOptionValue = $("#newOption").val();
+
+                // Add the new option to the select menu
+                if (newOptionValue !== "") {
+                    $("#numberSelect").append("<option value='" + newOptionValue + "'>" + newOptionValue + "</option>");
+
+                    // Clear the input field
+                    $("#newOption").val("");
+                }
+            });
+
+            // Add click event handler for the "Sort Options" button
+            $("#sortOptions").click(function () {
+                // Get all option elements and convert them to an array
+                var options = $("#numberSelect option").toArray();
+                let arr = [] ;
+                for(var i=0;i<options.length;i++){
+                    var temp = parseInt(options[i].innerText);
+                    arr.push(temp);
+                }
+                arr.sort();
+                var sortedOptionsHtml = "<div class='alert alert-info'><strong>Sorted Options:</strong><br>" + arr.join(", ") + "</div>";
+                $("#sortedOptionsDiv").html(sortedOptionsHtml);
+            });
+        });
+    </script>
+</body>
+</html>

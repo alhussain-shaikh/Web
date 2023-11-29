@@ -139,6 +139,16 @@ CREATE TABLE `tblproducts` (
   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+-- CREATE TABLE `tblproducts` (
+--   `id` int(11) NOT NULL,
+--   `CategoryName` varchar(150) DEFAULT NULL,
+--   `CompanyName` varchar(150) DEFAULT NULL,
+--   `ProductName` varchar(150) DEFAULT NULL,
+--   `ProductPrice` decimal(10,2) DEFAULT 0.00, -- Adjust the precision and scale as needed
+--   `PostingDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+--   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
 --
 -- Dumping data for table `tblproducts`
 --

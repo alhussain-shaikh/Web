@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> Web Technology Assignment 1 </title>
+		
+	</head>
+
+	<body>
+	<input type="number" id="num1" placeholder="Number  1" />  
+	<input type="number" id="num2" placeholder="Number 2" />
+	<button value="Submit" onclick="f1()"> + </button>
+	<button value="Submit" onclick="f2()"> - </button>
+	<button value="Submit" onclick="f3()"> * </button>
+	<button value="Submit" onclick="f4()"> / </button>
+	<script>
+		function f1(){
+			let a = parseInt(document.getElementById("num1").value) ;
+			let b = parseInt(document.getElementById("num2").value);
+		let result = a + b ;
+		alert("Addition is : "+result);
+		}
+		function f2(){
+			let a = parseInt(document.getElementById("num1").value) ;
+			let b = parseInt(document.getElementById("num2").value);
+		let result = a - b ;
+		alert("Subtraction is : "+result);
+		}
+		function f3(){
+			let a = parseInt(document.getElementById("num1").value) ;
+			let b = parseInt(document.getElementById("num2").value);
+		let result = a * b ;
+		alert("Multiplication is : "+result);
+		}
+		function f4(){
+			let a = parseInt(document.getElementById("num1").value) ;
+			let b = parseInt(document.getElementById("num2").value);
+		let result = a / b ;
+		alert("Division is : "+result);
+		}
+	</script>
+	</body>
+</html>

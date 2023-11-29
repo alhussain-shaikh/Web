@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+
+<form>
+    <p id="demo"></p>
+    <input id="a" type="text" value="10" />
+    <input id="b" type="text" value="5" />
+    <button id="addBtn">Add</button>
+    <button id="subtractBtn">Subtract</button>
+    <button id="multiplyBtn">Multiply</button>
+    <button id="divideBtn">Divide</button>
+</form>
+
+<script>
+    $(document).ready(function() {
+        $('#addBtn').click(function(e) {
+            e.preventDefault(); // Prevent form submission
+            
+            var a = parseInt($('#a').val());
+            var b = parseInt($('#b').val());
+            
+            if (!isNaN(a) && !isNaN(b)) {
+                var result = addFunction(a, b);
+                alert("Solution: " + result);
+            } else {
+                alert("Please enter valid numbers");
+            }
+        });
+        
+        $('#subtractBtn').click(function(e) {
+            e.preventDefault(); // Prevent form submission
+            
+            var a = parseInt($('#a').val());
+            var b = parseInt($('#b').val());
+            
+            if (!isNaN(a) && !isNaN(b)) {
+                var result = subtractFunction(a, b);
+                alert("Solution: " + result);
+            } else {
+                alert("Please enter valid numbers");
+            }
+        });
+        
+        $('#multiplyBtn').click(function(e) {
+            e.preventDefault(); // Prevent form submission
+            
+            var a = parseInt($('#a').val());
+            var b = parseInt($('#b').val());
+            
+            if (!isNaN(a) && !isNaN(b)) {
+                var result = multiplyFunction(a, b);
+                alert("Solution: " + result);
+            } else {
+                alert("Please enter valid numbers");
+            }
+        });
+        
+        $('#divideBtn').click(function(e) {
+            e.preventDefault(); // Prevent form submission
+            
+            var a = parseInt($('#a').val());
+            var b = parseInt($('#b').val());
+            
+            if (!isNaN(a) && !isNaN(b)) {
+                if (b === 0) {
+                    alert("Cannot divide by zero");
+                } else {
+                    var result = divideFunction(a, b);
+                    alert("Solution: " + result);
+                }
+            } else {
+                alert("Please enter valid numbers");
+            }
+        });
+
+        function addFunction(a, b) {
+            return a + b;
+        }
+        
+        function subtractFunction(a, b) {
+            return a - b;
+        }
+        
+        function multiplyFunction(a, b) {
+            return a * b;
+        }
+        
+        function divideFunction(a, b) {
+            return a / b;
+        }
+
+        var demo = document.getElementById("demo");
+        demo.innerHTML = multiplyFunction(10, 5);
+    });
+</script>
+
+</body>
+</html>
